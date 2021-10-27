@@ -1,4 +1,5 @@
 from django.urls import path
+from django.urls.conf import re_path
 from .views import BookAuthorView, SingleBookAuthorView, BookView, SingleBookView
 
 app_name = 'books'
@@ -9,4 +10,5 @@ urlpatterns = [
     path('bookauthors/<int:pk>', SingleBookAuthorView.as_view()),
     path('books/', BookView.as_view()),
     path('books/<int:pk>', SingleBookView.as_view()),
+
 ]

@@ -7,7 +7,10 @@ class BookAuthor(models.Model):
     email = models.EmailField()
 
     def __str__(self):
-        return self.name
+        return (self.name)
+    
+    def natural_key(self):
+        return (self.name, self.email)
 
 class Book(models.Model):
     author = models.ForeignKey('BookAuthor', related_name='books',on_delete=models.CASCADE)
