@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.documentation import include_docs_urls
+from django.views.static import serve
+from django.conf import settings
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/a/', include('articles.urls')),
-    path('api/b/', include('books.urls')),
+    path('api/v1/at/', include('articles.urls')),
+    path('api/v1/bk/', include('books.urls')),
+    path('docs/', include_docs_urls(title='LibraryAPI')),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),
+    
 ]
